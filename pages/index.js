@@ -1,14 +1,45 @@
-import Link from 'next/link';
 import Head from '../components/head';
 import Charts from '../components/charts';
 import fetch from 'isomorphic-unfetch';
 import crypto from 'crypto';
 
-
 const secret = '';
 const key = '';
 const currency = 'USDT';
 let total = 0;
+let options = {
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: 'pie'
+  },
+  title: {
+    text: 'Amount of assets'
+  },
+  tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.3f}$</b>'
+  },
+  accessibility: {
+      point: {
+          valueSuffix: '$'
+      }
+  },
+  plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+              enabled: true
+          },
+          showInLegend: true
+      }
+  },
+  series: [{
+    name: 'Invested',
+    data: []
+  }]
+}
 
 const Index = props => (
   <div>
@@ -16,14 +47,15 @@ const Index = props => (
     <Head title="Cryptofolio" />
     <div className="hero">
       <h1 className="title">CRYPTOFOLIO</h1>
+      {props.data.usdArray.map(p => {
+        total = total + p.angle;
+        options.series[0].data.push({y: p.angle, name: p.title})
+      })}
       <div className="data">
-        <Charts items={props.data.usdArray}/>
-        <Charts items={props.data.bnbArray}/>
+        <Charts items={options}/>
       </div>
-    {props.data.usdArray.map(p => {
-      total = total + p.angle;
-    })}
-    <h2>Total invested {total.toFixed(3)} $</h2>
+      {console.log('options',options.series[0].data)}
+    <h2>Total invested {total.toFixed(3)}$</h2>
     </div>
   </div>
 
@@ -88,7 +120,6 @@ async function getAssets(query, encrypted){
 
 async function getPrice(assetsArray) {
     let usdArray = []; 
-    let bnbArray = [];
     const rawPrice = await fetch('https://api.binance.com/api/v3/ticker/price',{
       method: 'GET',
       headers: {
@@ -107,17 +138,10 @@ async function getPrice(assetsArray) {
               a.radius = 100;
             usdArray.push({angle: Number(a.total), label:a.total + '$', subLabel:a.asset, title:a.asset});
           }
-          if(a.asset+'BNB' == s.symbol){
-            a.price = s.price;
-              a.total = a.free * s.price;
-              a.total = a.total.toFixed(3);
-              a.radius = 100;
-            bnbArray.push({angle: Number(a.total), label:a.total + 'BNB', subLabel:a.asset, title:a.asset});
-          }
         })
       })
     })
-    return {usdArray: usdArray, bnbArray: bnbArray};
+    return {usdArray};
 }
 
 export default Index;
