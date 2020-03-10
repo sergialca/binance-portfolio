@@ -2,8 +2,6 @@
 
 This repo allows you to create a web portfolio getting data from binance.
 
-[![Screen Shot](images/result.png)]
-
 ## Getting started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -31,3 +29,4 @@ npm run dev
 
 ## Result
 
+![Test Image 4](https://github.com/sergialca/binance-portfolio/blob/master/static/result.png)
