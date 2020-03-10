@@ -15,7 +15,7 @@ let options = {
     type: 'pie'
   },
   title: {
-    text: 'Amount of assets'
+    text: 'Assets'
   },
   tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.3f}$</b>'
@@ -54,8 +54,7 @@ const Index = props => (
       <div className="data">
         <Charts items={options}/>
       </div>
-      {console.log('options',options.series[0].data)}
-    <h2>Total invested {total.toFixed(3)}$</h2>
+    <p className="total">Total invested {total.toFixed(3)}$</p>
     </div>
   </div>
 
@@ -64,12 +63,15 @@ const Index = props => (
         text-align:center;
         color: #333;
         padding: 20px;
-        font-family: "Arial";
+        font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
       }
       .data{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+      }
+      .total{
+        font-size: 18px;
       }
     `}</style>
   </div>
@@ -129,14 +131,12 @@ async function getPrice(assetsArray) {
     .then( r => {
       return r.json();
     }).then(data => {
-      data.map(s =>{
+      data.map(s => {
         assetsArray.map(a =>{
           if(a.asset + currency == s.symbol){
-              a.price = s.price;
               a.total = a.free * s.price;
               a.total = a.total.toFixed(3);
-              a.radius = 100;
-            usdArray.push({angle: Number(a.total), label:a.total + '$', subLabel:a.asset, title:a.asset});
+            usdArray.push({angle: Number(a.total), title:a.asset});
           }
         })
       })
