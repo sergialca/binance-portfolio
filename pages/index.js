@@ -133,14 +133,12 @@ async function getPrice(assetsArray) {
     .then( r => {
       return r.json();
     }).then(data => {
-      data.map(s =>{
+      data.map(s => {
         assetsArray.map(a =>{
           if(a.asset + currency == s.symbol){
-              a.price = s.price;
               a.total = a.free * s.price;
               a.total = a.total.toFixed(3);
-              a.radius = 100;
-            usdArray.push({angle: Number(a.total), label:a.total + '$', subLabel:a.asset, title:a.asset});
+            usdArray.push({angle: Number(a.total), title:a.asset});
           }
         })
       })
