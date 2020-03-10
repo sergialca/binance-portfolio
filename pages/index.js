@@ -15,7 +15,7 @@ let options = {
     type: 'pie'
   },
   title: {
-    text: 'Amount of assets'
+    text: 'Assets'
   },
   tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.3f}$</b>'
@@ -54,22 +54,26 @@ const Index = props => (
       <div className="data">
         <Charts items={options}/>
       </div>
-      {console.log('options',options.series[0].data)}
-    <h2>Total invested {total.toFixed(3)}$</h2>
+    <p className="total">Total invested {total.toFixed(3)}$</p>
     </div>
   </div>
 
     <style jsx>{`
+      
       .hero {
         text-align:center;
         color: #333;
         padding: 20px;
-        font-family: "Arial";
+        font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
       }
       .data{
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+      }
+      .total{
+        font-size: 18px;
+        color: #333333;
       }
     `}</style>
   </div>
