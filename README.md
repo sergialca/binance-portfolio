@@ -19,7 +19,9 @@ These instructions will get you a copy of the project up and running on your loc
 ```bash
 npm i
 ```
-**2.** Add your API keys to index.js.
+**2.** Add your API keys to /pages/index.js:
+ const key = `${YOUR-API-KEY}`
+ const secret = `${YOUR-SECRET-KEY}`
 
 **3.** Execute:
 ```bash
