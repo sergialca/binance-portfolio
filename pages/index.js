@@ -73,10 +73,7 @@ const Index = props => (
       }
       .total{
         font-size: 18px;
-<<<<<<< HEAD
-=======
         color: #333333;
->>>>>>> 9dcd7ba45b33d1ad3dab62cd229ece665b13aaaf
       }
     `}</style>
   </div>
