@@ -22,7 +22,7 @@ let options = {
   },
   accessibility: {
       point: {
-          valueSuffix: '$'
+          valueSuffix: '%'
       }
   },
   plotOptions: {
