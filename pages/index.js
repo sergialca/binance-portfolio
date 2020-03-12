@@ -18,11 +18,11 @@ let options = {
     text: 'Assets'
   },
   tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage:.3f}$</b>'
+      pointFormat: '{series.name}: <b>{point.y:.3f}$</b>'
   },
   accessibility: {
       point: {
-          valueSuffix: '%'
+          valueSuffix: null
       }
   },
   plotOptions: {
@@ -37,6 +37,7 @@ let options = {
   },
   series: [{
     name: 'Invested',
+    innerSize: '68%',
     data: []
   }]
 }
