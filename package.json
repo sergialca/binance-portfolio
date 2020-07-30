@@ -22,6 +22,7 @@
     "next": "9.2.2",
     "react": "16.12.0",
     "react-dom": "16.12.0",
+    "react-spinners": "^0.9.0",
     "socks-proxy-agent": "^5.0.0"
   }
 }
