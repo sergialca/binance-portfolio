@@ -2,6 +2,8 @@
 
 This repo allows you to create a web portfolio getting data from binance.
 
+This project was bootstrapped with [Create Next App](https://create-next-app.github.io/).
+
 ## Getting started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
