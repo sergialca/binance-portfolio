@@ -4,9 +4,8 @@ import fetch from "isomorphic-unfetch";
 import crypto from "crypto";
 import PuffLoader from "react-spinners/PuffLoader";
 
-const secret =
-  "GD64CFKj42KuD8QsDxTKBsgkvjHtXVWiKjw4CZ8ranwfrjJ3KRR840TLYoqcNAq9";
-const key = "KSp047eoe4r2CxNGQHfrvIBGp5Bbi2dOxdCjza3NLnTByvMPm3C8k5kb0IxKs5Yr";
+const secret = "";
+const key = "";
 const currency = "USDT";
 let total = 0;
 let options = {
